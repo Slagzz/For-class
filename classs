@@ -1,7 +1,13 @@
-sudo systemctl daemon-reload
-sudo systemctl enable elasticsearch.service
-sudo systemctl restart elasticsearch.service
-sudo systemctl --type=service --state=active | grep elasticsearch
-wget https://packages.graylog2.org/repo/packages/graylog-4.2-repository_latest.deb
-sudo dpkg -i graylog-4.2-repository_latest.deb
-sudo apt-get update && sudo apt-get install graylog-server graylog-enterprise-plugins graylog-integrations-plugins graylog-enterprise-integrations-plugins
+network:
+    ethernets:
+        eth1:
+            addresses:
+            - 10.3.24.21/8
+            dhcp4: false
+            gateway4: 10.3.24.1
+            nameservers:
+                addresses:
+                - 8.8.8.8
+                search:
+                - workgroup
+    version: 2
